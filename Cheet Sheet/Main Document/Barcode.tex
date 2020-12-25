@@ -1,0 +1,218 @@
+% !TeX spellcheck = fa
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{color}
+\usepackage{float}
+\usepackage{babel}
+\usepackage{fourier}
+\usepackage{amsmath}
+%% \usepackage{dirtree} %to show tree view directories.
+\usepackage{caption}
+\usepackage{nomencl}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{outlines}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{makecell}
+\usepackage{tabularx} % for custom width table
+\usepackage{subcaption}
+\usepackage{datenumber}
+\usepackage{indentfirst}
+\usepackage{lstautogobble}
+\usepackage[table]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[space]{grffile}
+\usepackage[final]{pdfpages}
+\usepackage[datesep=.,calc,showdow]{datetime2}
+
+%% \usepackage[perpage]{footmisc}
+\usepackage[breakable]{tcolorbox}
+\tcbuselibrary{breakable, skins}
+\usepackage[Bjornstrup]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[colorlinks,linkcolor=blue,citecolor=red,urlcolor=blue]{hyperref}
+
+%% \usepackage[style=long,toc,xindy]{glossaries}
+%% \usepackage[symbols,nogroupskip,sort=standard]{glossaries-extra}
+
+\usepackage[fontsize={12,18}]{xepersian}
+
+\DTMsetup{useregional}
+
+% -------------- tcolorbox -------------
+\tcbset{
+	enhanced,
+	colback=cyan!5!white,
+	boxrule=0.1pt,
+	colframe=cyan!75!black,
+	fonttitle=\bfseries,
+	width=0.9\linewidth
+}
+% ------------- font setup -------------
+% ------------- xepersian --------------
+%% \settextfont{Microsoft Sans Serif}
+\settextfont{Yas}
+\setlatintextfont{Times New Roman}
+\setmathdigitfont{Yas}
+
+\defpersianfont\XBT[Scale=1.1]{XB Titre}
+\deflatinfont\FS[Scale=16]{Far.Symbol8}
+\deflatinfont\TNR[Scale=1]{Times New Roman}
+
+% --------------   xcolor  -------------
+\definecolor{ao}{rgb}			{0.00, 0.50, 0.00}
+\definecolor{codeGreen}{rgb}	{0.00, 0.50, 0.50}
+\definecolor{lavendergray}{rgb}	{0.87, 0.86, 0.92}
+\definecolor{mint}{rgb}			{0.24, 0.71, 0.54}
+\definecolor{aliceblue}{rgb}	{0.94, 0.97, 1.00}
+\definecolor{commentGreen}{rgb}	{0.13, 0.65, 0.47}
+\definecolor{steelBlue}{rgb}	{0.00, 0.00, 0.50}
+\definecolor{stringGreen}{rgb}	{0.00, 0.50, 0.00}
+\definecolor{rowBlue}{rgb}		{0.48, 0.81, 0.87}
+
+% ---------  page header setup ---------
+% --------------  fancyhdr -------------
+\pagestyle{fancy}
+
+\cfoot{\thepage}
+\rhead{\thepage }
+\renewcommand{\headrulewidth}{0.4pt}
+
+%% new commands.
+\newcommand{\lrm}[1]{\textcolor{steelBlue}{\lr{\texttt{#1}}}}
+
+%% tabular borders color
+\arrayrulecolor{gray}
+
+\renewcommand{\bibname}{مراجع}
+% \newglossaryentry{dot-product}{name={dot product},description={aaa}}
+% \makeglossaries
+\makenomenclature
+\renewcommand{\nomname}{فهرست علائم}
+\nomenclature{$\bullet$}{bullet}
+
+%% outline settings
+% \newcommand{\labelcenumi}{$\bullet$}
+% \setlist[itemize]{label = $\bullet$ }
+
+\begin{document}
+	\lstset{
+		frame=tb,
+		basicstyle=\color{steelBlue}\linespread{0.8}\ttfamily,
+		columns=fullflexible,
+		keepspaces=false,
+		tabsize=4,
+		autogobble,
+		breaklines=true,
+		breakatwhitespace=true,
+		stringstyle=\color{stringGreen},
+		commentstyle=\color{gray},
+		keywordstyle=\color{purple},
+		language=java,
+		aboveskip=3mm,
+		belowskip=3mm,
+		showstringspaces=false,
+		columns=flexible,
+		captionpos=b,
+		numbers=left,
+		numbersep=5pt,
+		numberstyle=\color{gray}\linespread{0.8}\ttfamily,
+		postbreak=\mbox{\textcolor{blue}{$\hookrightarrow$}\space}
+	}
+
+	\renewcommand{\bibname}{مراجع}
+	\thispagestyle{empty}
+
+
+	\begin{center}
+		{
+			\qquad\textcolor{gray}{\FS 2}
+		}
+	\end{center}\vspace*{5cm}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=.8\linewidth]{resources/BarcodeLogo.pdf}\\
+		\label{barcode-logo}
+	\end{figure}
+	\title{
+		\XBT
+		راهنمای تیم بارکد\\
+		همراه با کد‌های آماده برای مسابقات
+	}
+	\author{
+		\XBT
+		تیم بارکد
+		\lr{\XBT (Barcode)}
+	}
+	\date{
+		\XBT\today
+	}
+
+	\pagenumbering{roman}
+	\maketitle
+	\tableofcontents
+	\pagenumbering{arabic}
+
+	\chapter*{مقدمه}\label{chap0}
+	\addcontentsline{toc}{chapter}{
+	مقدمه}
+
+	\chapter{
+	کد‌های آماده
+	\lr{(Cheet Sheets)}
+	}\label{chap1}
+	\section{\lr{C++}}\label{sec1:chap1}
+	\subsection{\lr{kruskal}}\label{subsec1:sec1:chap1}
+	%\subsubsection{}\label{subsubsec1:subsec1:sec1:chap1}
+
+
+	\chapter{
+		قوانین مسابقه
+	}\label{chap2}
+	%\subsection{}\label{subsec1:sec1:chap2}
+	%\subsubsection{}\label{subsubsec1:subsec1:sec1:chap2}
+
+	% codes go there
+	%\begin{latin}
+	%	\small
+	%	\begin{lstlisting}[language=C++]
+	%	#include <iostream>
+	%
+	%	// use defined preprocessors to code faster
+	%	using namespace std;
+	%	int main()
+	%	{
+	%		cout << "hello world" << endl;
+	%		return 0;
+	%	}
+	%	\end{lstlisting}
+	%\end{latin}
+
+
+	% images goes there
+	%\begin{figure}
+	%	\centering
+	%	\includegraphics[width=\linewidth]{resources/..}
+	%	\caption{caption}
+	%	\label{fig1:subsec1:sec1:chap1}
+	%\end{figure}
+
+	%\begin{enumerate}[nosep]
+	%	\item first 	Item
+	%	\item second 	Item
+	%\end{enumerate}
+
+	%\begin{itemize}[nosep]
+	%	\item first 	Item
+	%	\item second 	Item
+	%\end{itemize}
+
+	\nocite{*}
+	\bibliographystyle{unsrt-fa}
+	\bibliography{reference}
+
+\end{document}
