@@ -63,6 +63,8 @@
 \deflatinfont\FS[Scale=16]{Far.Symbol8}
 \deflatinfont\TNR[Scale=1]{Times New Roman}
 
+\newcommand*{\CNSLS}{\fontfamily{Consolas}\selectfont}
+
 % --------------   xcolor  -------------
 \definecolor{ao}{rgb}			{0.00, 0.50, 0.00}
 \definecolor{codeGreen}{rgb}	{0.00, 0.50, 0.50}
@@ -163,16 +165,153 @@
 
 	\chapter{
 	کد‌های آماده
-	\lr{(Cheet Sheets)}
+	\lr{(Cheat Sheets)}
 	}\label{chap1}
+
+	% =============================== c++ section ================================
 	\section{\lr{C++}}\label{sec1:chap1}
-	\subsection{\lr{kruskal}}\label{subsec1:sec1:chap1}
+	\subsection{\lr{dijkstra}}\label{subsec1:sec1:chap1}
+	لینک برگرفته شده از سایت
+	\hyperref{https://www.geeksforgeeks.org}{algorithmSite}{geeksforgeeks}{\lr{geeks for geeks}}
+	الگوریتم
+	\hyperref{https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/}{DijkstraAlgorithm}{geeksforgeeks}
+	{\lr{Dijkstra’s shortest path algorithm}}.
+	\cite{Geeksfor41:online}
+
+
+	\begin{latin}
+		\small
+		\begin{lstlisting}[language=C++]
+		#include <climits>
+		#define V 9
+
+		int minDistance(int dist[], bool sptSet[]) {
+			int min = INT_MAX, min_index;
+			for (int v = 0; v < V; v++)
+			if (sptSet[v] == false && dist[v] <= min)
+			min = dist[v], min_index = v;
+			return min_index;
+		}
+
+		void dijkstra(int graph[V][V], int src) {
+			int dist[V];
+			bool sptSet[V];
+			for (int i = 0; i < V; i++)
+			dist[i] = INT_MAX, sptSet[i] = false;
+			dist[src] = 0;
+			for (int count = 0; count < V - 1; count++) {
+				int u = minDistance(dist, sptSet);
+				sptSet[u] = true;
+				for (int v = 0; v < V; v++)
+				if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX &&
+										 dist[u] + graph[u][v] < dist[v])
+					dist[v] = dist[u] + graph[u][v];
+			}
+			printSolution(dist);
+		}
+		\end{lstlisting}
+	\end{latin}
+
+	\subsection{\lr{segment tree}}\label{subsec2:sec1:chap1}
+
+	لینک برگرفته شده از سایت
+	\hyperref{https://www.geeksforgeeks.org}{algorithmSite}{geeksforgeeks}{\lr{geeks for geeks}}
+	الگوریتم
+	\hyperref{https://www.geeksforgeeks.org/segment-tree-efficient-implementation/}{Segment tree}{geeksforgeeks}
+	{\lr{Dijkstra’s shortest path algorithm}}.
+	\cite{Geeksfor41:online}
+	\begin{latin}
+		\small
+		\begin{lstlisting}[language=C++]
+		const int N = 100000;
+		int n;
+		int tree[2 * N];
+
+		void build( int arr[]) {
+			for (int i=0; i<n; i++)
+				tree[n+i] = arr[i];
+			for (int i = n - 1; i > 0; --i)
+				tree[i] = tree[i<<1] + tree[i<<1 | 1];
+		}
+
+		void updateTreeNode(int p, int value) {
+			tree[p+n] = value;
+			p = p+n;
+			for (int i=p; i > 1; i >>= 1)
+				tree[i>>1] = tree[i] + tree[i^1];
+		}
+
+		int query(int l, int r) {
+			int res = 0;
+			for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+				if (l&1)
+					res += tree[l++];
+				if (r&1)
+					res += tree[--r];
+			}
+			return res;
+		}
+		\end{lstlisting}
+	\end{latin}
+
+	\subsection{\lr{algorithm name}}\label{subsec3:sec1:chap1}
 	%\subsubsection{}\label{subsubsec1:subsec1:sec1:chap1}
 
 
+	% ============================ python section ================================
+	\section{\lr{Python}}\label{sec2:chap1}
+	\subsection{\lr{algorithm name}}\label{subsec1:sec2:chap1}
+
+	% codes go there
+	%\begin{latin}
+	%	\small
+	%	\begin{lstlisting}[language=C++]
+	%	#include <iostream>
+	%
+	%	// use defined preprocessors to code faster
+	%	using namespace std;
+	%	int main()
+	%	{
+	%		cout << "hello world" << endl;
+	%		return 0;
+	%	}
+	%	\end{lstlisting}
+	%\end{latin}
+
+	% ============================== java section ================================
+	\section{\lr{Java}}\label{sec3:chap1}
+	\subsection{\lr{algorithm name}}\label{subsec1:sec3:chap1}
+	% codes go there
+	%\begin{latin}
+	%	\small
+	%	\begin{lstlisting}[language=C++]
+	%	#include <iostream>
+	%
+	%	// use defined preprocessors to code faster
+	%	using namespace std;
+	%	int main()
+	%	{
+	%		cout << "hello world" << endl;
+	%		return 0;
+	%	}
+	%	\end{lstlisting}
+	%\end{latin}
+
+	%============================ chapter 2 ==============================
 	\chapter{
 		قوانین مسابقه
 	}\label{chap2}
+
+
+
+
+	%============================ chapter 3 ==============================
+	\chapter{
+		توضیحات الگوریتم‌ها
+	}\label{chap3}
+
+
+	% latex tempelates
 	%\subsection{}\label{subsec1:sec1:chap2}
 	%\subsubsection{}\label{subsubsec1:subsec1:sec1:chap2}
 
