@@ -33,7 +33,7 @@ It also contain description for algorithm and libraries.
 ## To-DO
 - [ ] complete list of useful algorithms.
 - [ ] describe all algorithms in Persian Language.
-- [ ] create a GitHub web page.
+- [x] create a GitHub web page.
 - [ ] add code samples.
 - [ ] add useful reference and books.
 - [ ] add contest problems and most used algorithms.
