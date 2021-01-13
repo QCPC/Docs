@@ -254,7 +254,35 @@
 		\end{lstlisting}
 	\end{latin}
 
-	\subsection{\lr{algorithm name}}\label{subsec3:sec1:chap1}
+	\subsection{\lr{big int multiplication}}\label{subsec4:sec1:chap1}
+	\lr{revise needed...}
+	\begin{latin}
+		\small
+		\begin{lstlisting}[language=C++]
+		 #include <string>
+		 #include <algorithm>
+
+		string multiplication(string str1, string str2)	{
+			int len1 = str1.length(), len2 = 0, olen = 0;
+			string res(len1 + len2, 0);
+			for (int i = 0; i <len2; i++) {
+				for (int j = 0; j <len1; j++) {
+					res[j + i] += (str1[len1 - j - 1] - 48) * (str2[len2 - i - 1] - 48);
+					olen = j + i + 1;
+					if (res[j + i] >= 10) {
+						res[j + i + 1] += res[j + i] / 10;
+						res[j + i] = res[j + i] % 10;
+						olen = j + i + 2;
+					}
+				}
+			}
+			string reverseOut = reverse(res.begin(),res.end());
+			return reverseOut;
+		}
+		\end{lstlisting}
+	\end{latin}
+
+	\subsection{\lr{algorithm name}}\label{subsec5:sec1:chap1}
 	%\subsubsection{}\label{subsubsec1:subsec1:sec1:chap1}
 
 
