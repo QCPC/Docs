@@ -1,4 +1,4 @@
-% !TeX spellcheck = fa
+% !TeX spellcheck = en_US
 \documentclass[a4paper,12pt]{report}
 
 \usepackage{color}
@@ -170,7 +170,7 @@
 
 	% =============================== c++ section ================================
 	\section{\lr{C++}}\label{sec1:chap1}
-	\subsection{\lr{dijkstra}}\label{subsec1:sec1:chap1}
+	\subsection{\lr{Dijkstra}}\label{subsec1:sec1:chap1}
 	لینک برگرفته شده از سایت
 	\hyperref{https://www.geeksforgeeks.org}{algorithmSite}{geeksforgeeks}{\lr{geeks for geeks}}
 	الگوریتم
@@ -212,7 +212,7 @@
 		\end{lstlisting}
 	\end{latin}
 
-	\subsection{\lr{segment tree}}\label{subsec2:sec1:chap1}
+	\subsection{\lr{Segment Tree}}\label{subsec2:sec1:chap1}
 
 	لینک برگرفته شده از سایت
 	\hyperref{https://www.geeksforgeeks.org}{algorithmSite}{geeksforgeeks}{\lr{geeks for geeks}}
@@ -254,7 +254,7 @@
 		\end{lstlisting}
 	\end{latin}
 
-	\subsection{\lr{big int multiplication}}\label{subsec4:sec1:chap1}
+	\subsection{\lr{Big Int Multiplication}}\label{subsec4:sec1:chap1}
 	\lr{revise needed...}
 	\begin{latin}
 		\small
@@ -282,7 +282,182 @@
 		\end{lstlisting}
 	\end{latin}
 
-	\subsection{\lr{algorithm name}}\label{subsec5:sec1:chap1}
+	\subsection{\lr{K-D tree}}\label{subsec5:sec1:chap1}
+	لینک برگرفته شده از سایت
+	\hyperref{https://www.geeksforgeeks.org}{algorithmSite}{geeksforgeeks}{\lr{geeks for geeks}}
+	الگوریتم
+	\hyperref{https://www.geeksforgeeks.org/k-dimensional-tree/}{K D-tree}{geeksforgeeks}
+	{\lr{kd-tree}}.
+	\cite{Geeksfor41:online}
+	\begin{latin}
+		\small
+		\begin{lstlisting}[language=C++]
+		 #include<bits/stdc++.h>
+		 using namespace std;
+
+		 const int k = 2;
+
+		 struct Node {
+		 	int point[k];
+		 	Node *left, *right;
+		 };
+
+		 struct Node* newNode(int arr[]) {
+		 	struct Node* temp = new Node;
+		 	for (int i=0; i<k; i++)
+		 		temp->point[i] = arr[i];
+		 	temp->left = temp->right = NULL;
+		 	return temp;
+		 }
+
+		 Node *insertRec(Node *root, int point[], unsigned depth) {
+		 	if (root == NULL)
+		 		return newNode(point);
+		 	unsigned cd = depth % k;
+		 	if (point[cd] < (root->point[cd]))
+		 		root->left = insertRec(root->left, point, depth + 1);
+		 	else
+		 		root->right = insertRec(root->right, point, depth + 1);
+		 	return root;
+		 }
+
+		 Node* insert(Node *root, int point[]) {
+		 	return insertRec(root, point, 0);
+		 }
+
+		 bool arePointsSame(int point1[], int point2[]) {
+		 	for (int i = 0; i < k; ++i)
+			 	if (point1[i] != point2[i])
+			 		return false;
+		 	return true;
+		 }
+
+		 bool searchRec(Node* root, int point[], unsigned depth) {
+		 	if (root == NULL)
+		 		return false;
+		 	if (arePointsSame(root->point, point))
+		 		return true;
+
+		 	unsigned cd = depth % k;
+		 	if (point[cd] < root->point[cd])
+		 		return searchRec(root->left, point, depth + 1);
+		 	return searchRec(root->right, point, depth + 1);
+		 }
+
+		 bool search(Node* root, int point[]) {
+		 	return searchRec(root, point, 0);
+		 }
+
+		 int main() {
+		 	struct Node *root = NULL;
+		 	int points[][k] = {{3, 6}, {17, 15}, {13, 15}, {6, 12}, {9, 1}, {2, 7}, {10, 19}};
+
+		 	int n = sizeof(points)/sizeof(points[0]);
+
+		 	for (int i=0; i<n; i++)
+			 	root = insert(root, points[i]);
+
+		 	int point1[] = {10, 19};
+		 	(search(root, point1))? cout << "Found\n": cout << "Not Found\n";
+
+		 	int point2[] = {12, 19};
+		 	(search(root, point2))? cout << "Found\n": cout << "Not Found\n";
+
+		 	return 0;
+		 }
+
+		\end{lstlisting}
+	\end{latin}
+
+	\subsection{\lr{Longest Common Subsequence}}\label{subsec6:sec1:chap1}
+	لینک برگرفته شده از سایت
+	\hyperref{https://www.geeksforgeeks.org}{algorithmSite}{geeksforgeeks}{\lr{geeks for geeks}}
+	الگوریتم
+	\hyperref{https://www.geeksforgeeks.org/k-dimensional-tree/}{LCS}{geeksforgeeks}
+	{\lr{Longest Common Subsequence}}.
+	\cite{Geeksfor41:online}
+	\begin{latin}
+		\small
+		\begin{lstlisting}[language=C++]
+		 #include<bits/stdc++.h>
+		 using namespace std;
+		 int max(int a, int b);
+		 int lcs( char *X, char *Y, int m, int n ) {
+		 	int L[m + 1][n + 1];
+		 	int i, j;
+		 	for (i = 0; i <= m; i++) {
+		 		for (j = 0; j <= n; j++) {
+		 			if (i == 0 || j == 0)
+		 				L[i][j] = 0;
+		 			else if (X[i - 1] == Y[j - 1])
+		 				L[i][j] = L[i - 1][j - 1] + 1;
+		 			else
+		 				L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+		 		}
+		 	}
+		 	return L[m][n];
+		 }
+
+		 int max(int a, int b) {
+		 	return (a > b)? a : b;
+		 }
+
+		 int main() {
+		 	char X[] = "AGGTAB";
+		 	char Y[] = "GXTXAYB";
+		 	int m = strlen(X);
+		 	int n = strlen(Y);
+		 	cout << "Length of LCS is "	<< lcs( X, Y, m, n );
+		 	return 0;
+		 }
+		\end{lstlisting}
+	\end{latin}
+
+	\subsection{\lr{Longest Common Subsequence}}\label{subsec6:sec1:chap1}
+	لینک برگرفته شده از سایت
+	\hyperref{https://www.geeksforgeeks.org}{algorithmSite}{geeksforgeeks}{\lr{geeks for geeks}}
+	الگوریتم
+	\hyperref{https://www.geeksforgeeks.org/k-dimensional-tree/}{LCS}{geeksforgeeks}
+	{\lr{Longest Common Subsequence}}.
+	\cite{Geeksfor41:online}
+	\begin{latin}
+		\small
+		\begin{lstlisting}[language=C++]
+		 #include<bits/stdc++.h>
+		 using namespace std;
+		 int max(int a, int b);
+		 int lcs( char *X, char *Y, int m, int n ) {
+		 	int L[m + 1][n + 1];
+		 	int i, j;
+		 	for (i = 0; i <= m; i++) {
+		 		for (j = 0; j <= n; j++) {
+		 			if (i == 0 || j == 0)
+		 				L[i][j] = 0;
+		 			else if (X[i - 1] == Y[j - 1])
+		 				L[i][j] = L[i - 1][j - 1] + 1;
+		 			else
+		 				L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+		 		}
+		 	}
+		 	return L[m][n];
+		 }
+
+		 int max(int a, int b) {
+		 	return (a > b)? a : b;
+		 }
+
+		 int main() {
+		 	char X[] = "AGGTAB";
+		 	char Y[] = "GXTXAYB";
+		 	int m = strlen(X);
+		 	int n = strlen(Y);
+		 	cout << "Length of LCS is "	<< lcs( X, Y, m, n );
+		 	return 0;
+		 }
+		\end{lstlisting}
+	\end{latin}
+
+	\subsection{\lr{algorithm name}}\label{subsec0:sec1:chap1}
 	%\subsubsection{}\label{subsubsec1:subsec1:sec1:chap1}
 
 
