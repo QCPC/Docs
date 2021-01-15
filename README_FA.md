@@ -1,3 +1,4 @@
+<link href="readme-style.css" rel="stylesheet"></link>
 <div dir="rtl">
 
 # Barcode
@@ -12,8 +13,11 @@
 <summary> الگوریتم‌ها </summary>
 <div dir="ltr">
 
-- [x] Dijkstra: ~~Efficient~~, ~~STL~~, C++
-- [x] Segment Tree: ~~STL~~
+- [x] Dijkstra: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] Segment Tree: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] Big Int Multiplication: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] K-D Tree: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] Longest Common Subsequence: <sub>~~Efficient~~, ~~STL~~, C++</sub>
 
 </div>
 </details>
@@ -24,7 +28,7 @@
 ## نمونه‌ها کد‌ها
 <div dir="ltr">
 
-- [ ] C++
+- [x] C++
 - [ ] C
 - [ ] Python
 
@@ -44,11 +48,11 @@
 
 - [ ] کامل‌کردن لیست الگوریتم‌های کاربردی.
 - [ ] توضیح الگوریتم‌ها به زبان فارسی.
-- [ ] ساخت GitHub web page.
+- [ ] &#x202b;.ساخت GitHub web page
 - [ ] اضافه کردن نمونه کد‌ها.
 - [ ] اضافه کردن کتب و  مراجع مناسب.
 - [ ] اضافه کردن مسائل مسابقات و الگوریتم‌های پر تکرار.
-<br>
-...
+<br>. . .
+
 </div>
 </div>
