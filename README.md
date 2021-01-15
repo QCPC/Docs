@@ -1,16 +1,22 @@
+><link href="readme-style.css" rel="stylesheet"></link>
+
 # Barcode
 
 A repository for barcode codes and cheat sheet.<br>
 It also contain description for algorithm and libraries.
 
+translations: [persion](./README_FA.md)
 
 ## Cheat Sheets
 
 <details open>
 <summary> Algorithms </summary>
 
-- [x] Dijkstra: ~~Efficient~~, ~~STL~~, C++
-- [x] Segment Tree: ~~STL~~
+- [x] Dijkstra: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] Segment Tree: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] Big Int Multiplication: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] K-D Tree: <sub>~~Efficient~~, ~~STL~~, C++</sub>
+- [x] Longest Common Subsequence: <sub>~~Efficient~~, ~~STL~~, C++</sub>
 
 </details>
 
@@ -38,4 +44,4 @@ It also contain description for algorithm and libraries.
 - [ ] add useful reference and books.
 - [ ] add contest problems and most used algorithms.
 <br>
-$\dots$
+. . .
